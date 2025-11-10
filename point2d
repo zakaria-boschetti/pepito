@@ -1,0 +1,74 @@
+# ==============================
+# Imports et variables globales
+# ==============================
+import math
+
+# ==============================
+# Définition des fonctions secondaires
+# ==============================
+# (Aucune pour le moment, tout sera dans la classe)
+
+# ==============================
+# Définition de la classe Point2D
+# ==============================
+class Point2D:
+    """
+    Classe représentant un point dans le plan 2D.
+    
+    >>> p1 = Point2D()
+    >>> print(p1)
+    Point2D(0, 0)
+    >>> p2 = Point2D(3, 4)
+    >>> print(p2)
+    Point2D(3, 4)
+    >>> p2.move(1, 2)
+    >>> print(p2)
+    Point2D(4, 6)
+    >>> round(p1.distance(p2), 2)
+    7.21
+    """
+    
+    def __init__(self, x=0, y=0):
+        """Initialise un point avec les coordonnées (x, y)."""
+        self.x = x
+        self.y = y
+
+    def move(self, dx, dy):
+        """Déplace le point de dx en x et dy en y."""
+        self.x += dx
+        self.y += dy
+
+    def distance(self, other):
+        """Retourne la distance euclidienne entre ce point et un autre Point2D."""
+        return math.hypot(self.x - other.x, self.y - other.y)
+
+    def __str__(self):
+        """Redéfinition de print pour un affichage clair du point."""
+        return f"Point2D({self.x}, {self.y})"
+
+# ==============================
+# Définition de la fonction principale
+# ==============================
+def main():
+    # Création de points
+    p1 = Point2D()
+    p2 = Point2D(3, 4)
+
+    print("Avant déplacement :")
+    print("p1 =", p1)
+    print("p2 =", p2)
+
+    # Déplacement du point p2
+    p2.move(1, 2)
+    print("\nAprès déplacement de p2 :")
+    print("p2 =", p2)
+
+    # Calcul de distance
+    dist = p1.distance(p2)
+    print(f"\nDistance entre p1 et p2 : {dist:.2f}")
+
+# ==============================
+# Appel protégé de la fonction principale
+# ==============================
+if __name__ == "__main__":
+    main()
